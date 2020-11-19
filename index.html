@@ -26,95 +26,20 @@
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <div class="title">Ein neuer Brief für Kathi <br>😮</div>
+    <div class="title">Ein neuer Brief für Kathi <br>🥰</div>
     <div data-aos="fade-right" data-aos-duration="1000" class="envelope-container">
         <div class="content">
             <div class="envelope" onclick="openCard()"></div>
             <div class="letter">
-                <div class="body">
-
+                <div class="headline">
+                    Kathi
+                </div>
+                <div class="text">
+                    Ich liebe dich
                 </div>
             </div>
             <div class="letter_shadow"></div>
         </div>
-    </div>
-
-    <div class="message">
-
-        <div class="wrapper">
-            <div class="text">
-                Happy Halloween
-                <div class="sub-text">
-                    Ich steh vor deiner Tür
-                </div>
-            </div>
-            <div class="skeleton">
-                <div class="head">
-                    <div class="head-hemispheres"></div>
-                    <div class="eye-shadow eye-shadow-left"></div>
-                    <div class="eye eye-left"></div>
-                    <div class="eye-shadow eye-shadow-right"></div>
-                    <div class="eye eye-right"></div>
-                    <div class="nose"></div>
-                    <div class="nose-shadow"></div>
-                    <div class="mouth">
-                        <div class="teeth teeth-left"></div>
-                        <div class="teeth teeth-right"></div>
-                    </div>
-                </div>
-                <div class="below-head-container">
-                    <div class="backbone"></div>
-                    <div class="body">
-                        <div class="body-inner">
-                            <div class="main-bone"></div>
-                            <div class="shoulder"></div>
-                            <div class="rib-cage rib-cage-1"></div>
-                            <div class="rib-cage rib-cage-2"></div>
-                            <div class="kidney-cover"></div>
-                            <div class="kidney kidney-left"></div>
-                            <div class="kidney kidney-right"></div>
-                            <div class="hand hand-left">
-                                <div class="hand-top"></div>
-                                <div class="arm"></div>
-                                <div class="arm-below-container">
-                                    <div class="forearm"></div>
-                                    <div class="wrist"></div>
-                                    <div class="finger finger-pinky"></div>
-                                    <div class="finger finger-thumb"></div>
-                                    <div class="finger finger-ring"></div>
-                                    <div class="finger finger-index"></div>
-                                </div>
-                            </div>
-                            <div class="hand hand-right">
-                                <div class="hand-top"></div>
-                                <div class="arm"></div>
-                                <div class="arm-below-container">
-                                    <div class="forearm"></div>
-                                    <div class="wrist"></div>
-                                    <div class="finger finger-pinky"></div>
-                                    <div class="finger finger-thumb"></div>
-                                    <div class="finger finger-ring"></div>
-                                    <div class="finger finger-index"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feet-container">
-                            <div class="foot foot-left">
-                                <div class="thigh"></div>
-                                <div class="leg leg-left"></div>
-                                <div class="shoe"></div>
-                            </div>
-                            <div class="foot foot-right">
-                                <div class="thigh"></div>
-                                <div class="leg leg-right"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
     </div>
 
     <script>
@@ -146,13 +71,20 @@
             .to('.letter', {
                 duration: .7,
                 ease: "back.out(.4)",
-                translateY: -5,
-                translateZ: 550
+                translateY: 0,
+                width: "100vw",
+                height: "100vh",
+                left: 0,
+                top: 0,
+                "margin-left": "calc(-50vw + 50%)",
+                "margin-top": "-20vh",
+                "font-size": "20px"
             });
 
         let t2 = gsap.timeline({
             paused: true
         });
+
         t2.to('.shadow', {
             delay: 1.4,
             width: 450,
@@ -164,14 +96,6 @@
         function openCard(e) {
             t1.play();
             t2.play();
-            setTimeout(function () {
-                setTimeout(function () {
-                    $('.envelope-container').hide();
-                    $('.title').hide();
-                    AOS.init();
-                }, 600);
-                $('.message').fadeIn(400)
-            }, 1500);
         }
     </script>
 </body>
