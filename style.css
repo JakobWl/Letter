@@ -9,6 +9,11 @@ body {
     src: url(Roboto-Regular.ttf);
 }
 
+@font-face {
+    font-family: valentine;
+    src: url(Pinky\ Cupid.otf);
+}
+
 :root {
     --base: #f7f7f7;
     --base-light: #C7C7C7;
@@ -61,7 +66,7 @@ body {
 }
 
 .letter .headline {
-    font-family: myFont;
+    font-family: valentine;
     grid-area: headline;
     text-align: center;
 }
