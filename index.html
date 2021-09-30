@@ -26,12 +26,18 @@
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <div class="title"></div>
+    <div class="title">Ein Brief für Flora<br>Klick mal drauf<br>😉</div>
     <div data-aos="fade-right" data-aos-duration="1000" class="envelope-container">
         <div class="content">
             <div class="envelope" onclick="openCard()"></div>
             <div class="letter">
                 <div class="headline">
+                    Rate mal wer an dich denkt<br>
+                    Und definitiv was zu Halloween mit dir machen will!<br>
+                    Vollidiot
+                </div>
+                <div class="center-on-page">
+                    <div class="heart pulse"></div>
                 </div>
             </div>
             <div class="letter_shadow"></div>
@@ -76,15 +82,9 @@
                 "margin-top": "-20vh",
                 "font-size": "20px"
             })
-            .to('.heart-container', {
-                width: '330px',
-                height: '330px',
+            .set('.center-on-page', {
+                display: "block",
                 duration: 0.1,
-            })
-            .to('svg', {
-                width: '330px',
-                height: '330px',
-                duration: 0.9
             });
 
         let t2 = gsap.timeline({

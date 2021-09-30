@@ -4,6 +4,11 @@ body {
     scroll-behavior: smooth;
 }
 
+@font-face {
+    font-family: myFont;
+    src: url(Roboto-Regular.ttf);
+}
+
 :root {
     --base: #f7f7f7;
     --base-light: #C7C7C7;
@@ -45,7 +50,7 @@ body {
     height: 160px;
     display: grid;
     grid-template-areas: 'headline'
-    'text';
+        'text';
     align-items: center;
     justify-content: center;
     z-index: 15;
@@ -73,7 +78,7 @@ body {
     height: 20vh;
 }
 
-.sub-text{
+.sub-text {
     color: gray;
     font-size: 5vh;
 }
@@ -110,25 +115,92 @@ body {
     background: linear-gradient(30deg, var(--base-dark) 47%, var(--shadow) 50%, var(--base) 50%) 150px 90px/150px 90px no-repeat, linear-gradient(31deg, var(--base) 49%, var(--shadow) 50%, transparent 50%) 0px 0px/152px 90px no-repeat, linear-gradient(150deg, var(--base) 50%, var(--shadow) 50%, var(--base-dark) 53%) 0px 90px/151px 90px no-repeat, linear-gradient(148.7deg, transparent 50%, var(--shadow) 50%, var(--base) 51%) 150px 0px/150px 90px no-repeat;
 }
 
-a{
+a {
     color: white;
-    font-family: "Rubik",sans-serif;
-    position:absolute;
-    right:20px ;
-    top:20px;
-    border:2px solid white;
-    text-decoration:none;
+    font-family: "Rubik", sans-serif;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: 2px solid white;
+    text-decoration: none;
 }
+
 @media screen and (min-width: 451px) {
-  a{
-    font-size: 20px;
-     padding:8px 12px 8px 12px;
-  }
+    a {
+        font-size: 20px;
+        padding: 8px 12px 8px 12px;
+    }
 }
 
 @media screen and (max-width: 450px) {
-  a{
-    font-size: 16px;
-     padding:5px 8px 5px 8px;
-  }
+    a {
+        font-size: 16px;
+        padding: 5px 8px 5px 8px;
+    }
+}
+
+/*heart beginning*/
+
+.center-on-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.heart {
+    position: relative;
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: #fd4949;
+    border-radius: 0 0 0 10px;
+    transform: rotate(-45deg);
+    animation: pulse 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+    position: absolute;
+    content: "";
+    width: 100px;
+    height: 100px;
+    background: #fd4949;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    right: -50px;
+}
+
+@keyframes pulse {
+
+    0%,
+    20% {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    30% {
+        transform: rotate(-45deg) scale(1.2);
+    }
+
+    50% {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    60% {
+        transform: rotate(-45deg) scale(1.1);
+    }
+
+    70%,
+    100% {
+        transform: rotate(-45deg) scale(1);
+    }
 }
