@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js">
+<html class="no-js" lang="">
 <!--<![endif]-->
 
 <head>
@@ -13,97 +16,160 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://onpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/CSSRulePlugin.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <div class="title">Ein Brief für Flora<br>Klick mal drauf<br>😉</div>
-    <div data-aos="fade-right" data-aos-duration="1000" class="envelope-container">
-        <div class="content">
-            <div class="envelope" onclick="openCard()"></div>
-            <div class="letter">
-                <div class="headline">
-                    Rate mal wer an dich denkt<br>
-                    Und definitiv was zu Halloween mit dir machen will!<br>
-                    Vollidiot
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a>
+    to improve your experience.</p>
+<![endif]-->
+<div class="title">Hello du bitte drück da drauf <img class="arrow" src="./giphy.gif" alt="Description of the GIF">
+</div>
+<div data-aos="fade-right" data-aos-duration="1000" class="envelope-container">
+    <div class="content">
+        <div class="envelope" onclick="openCard()"></div>
+        <div class="letter">
+            <div class="headline">Willst du mit mir gehn?👀</div>
+            <div class="options animated-inputs checkbox">
+                <div class="each">
+                    <input onclick="responseChosen()" id="b1" name="checks" type="checkbox">
+                    <label for="b1">
+                        Ja, na herst!😌
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.3,61.3c5.7,4.1,13.2,11.8,16.7,18C53,60.5,66,41,77.7,20.8"/>
+                        </svg>
+                    </label>
                 </div>
-                <div class="center-on-page">
-                    <div class="heart pulse"></div>
+                <div class="each">
+                    <input onclick="responseChosen()" id="b2" name="checks" type="checkbox">
+                    <label for="b2">
+                        Oida wird Zeit!🙄
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.3,61.3c5.7,4.1,13.2,11.8,16.7,18C53,60.5,66,41,77.7,20.8"/>
+                        </svg>
+                    </label>
+                </div>
+                <div class="each">
+                    <input onclick="responseChosen()" id="b3" name="checks" type="checkbox">
+                    <label for="b3">
+                        Na sicha!😁
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.3,61.3c5.7,4.1,13.2,11.8,16.7,18C53,60.5,66,41,77.7,20.8"/>
+                        </svg>
+                    </label>
                 </div>
             </div>
-            <div class="letter_shadow"></div>
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <p>Schau nach links!❤️</p>
+                </div>
+            </div>
+
         </div>
+        <div class="letter_shadow"></div>
     </div>
+</div>
 
-    <script>
-        AOS.init();
-        let t1 = gsap.timeline({
-            paused: true
-        });
-        let flap = CSSRulePlugin.getRule(".envelope:before");
+<script>
+    function responseChosen() {
+        // Create a new timeline
+        let responseTimeline = gsap.timeline();
 
-        t1.to(flap, {
-                duration: 0.5,
-                cssRule: {
-                    rotateX: 180
-                }
-            })
-            .set(flap, {
-                cssRule: {
-                    zIndex: 10
-                }
-            })
-            .to('.letter', {
-                translateY: -200,
-                duration: 0.9,
-                ease: "back.inOut(1.5)"
-            })
-            .set('.letter', {
-                zIndex: 40
-            })
-            .to('.letter', {
-                duration: .7,
-                ease: "back.out(.4)",
-                translateY: 0,
-                width: "100vw",
-                height: "100vh",
-                left: 0,
-                top: 0,
-                "margin-left": "calc(-50vw + 50%)",
-                "margin-top": "-20vh",
-                "font-size": "20px"
-            })
-            .set('.center-on-page', {
-                display: "block",
-                duration: 0.1,
+        // Add the confetti animation to the timeline
+        responseTimeline.add(() => {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: {y: 0.6}
+            });
+        }, 0); // Start immediately
+
+        // Add a delay before showing the modal
+        responseTimeline.set({}, {}, "+=2") // 2 seconds delay
+            .add(() => {
+                // Display modal
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
             });
 
-        let t2 = gsap.timeline({
-            paused: true
-        });
+        // Play the timeline
+        responseTimeline.play();
+    }
 
-        t2.to('.shadow', {
-            delay: 1.4,
-            width: 450,
-            boxShadow: "-75px 150px 10px 5px #eeeef3",
-            ease: "back.out(.2)",
-            duration: .7
-        });
 
-        function openCard(e) {
-            t1.play();
-            t2.play();
+    AOS.init();
+    let t1 = gsap.timeline({
+        paused: true
+    });
+    let flap = CSSRulePlugin.getRule(".envelope:before");
+    let rule = CSSRulePlugin.getRule(".animated-inputs label::before");
+    let inputs = CSSRulePlugin.getRule(".animated-inputs .each");
+
+    t1.to(flap, {
+        duration: 0.5,
+        cssRule: {
+            rotateX: 180
         }
-    </script>
+    }, 0)
+        .set(flap, {
+            cssRule: {
+                zIndex: 10
+            }
+        }, 0.2)
+        .to('.letter', {
+            translateY: -350,
+            duration: 0.9,
+            ease: "back.out(1.5)"
+        }, .5)
+        .set('.letter', {
+            zIndex: 40
+        }, 1.4)
+        .to('.letter', {
+            duration: .7,
+            ease: "back.out(.4)",
+            translateY: 0,
+            width: "100vw",
+            height: "100vh",
+            left: 0,
+            top: 0,
+            "margin-left": "calc(-50vw + 50%)",
+            "margin-top": "-20vh",
+            "font-size": "80px" // Adjust as necessary for the text size transition
+        }, 1.4)
+        .to('.options', {"font-size": "40px"}, 1.4)
+        .to(rule, {"width": "50px", "height": "50px"}, 1.4)
+        .to(inputs, {"padding": ".8em 0"}, 1.4)
+        .set('.center-on-page', {
+            display: "block",
+            duration: 0.1,
+        }, 1.8);
+
+    let t2 = gsap.timeline({
+        paused: true
+    });
+
+    t2.to('.shadow', {
+        delay: 1.4,
+        width: 450,
+        boxShadow: "-75px 150px 10px 5px #eeeef3",
+        ease: "back.out(.2)",
+        duration: .7
+    }, 0);
+
+    function openCard() {
+        t1.play();
+        t2.play();
+    }
+</script>
 </body>
 
 </html>
